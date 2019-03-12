@@ -1,0 +1,3 @@
+{
+  "extends": "./node_modules/dh-dependency-base/config/.eslintrc.json"
+}
