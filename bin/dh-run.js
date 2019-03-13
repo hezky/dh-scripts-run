@@ -4,13 +4,10 @@ const spawnSync = require("child_process").spawnSync;
 const script = process.argv[2];
 const args = process.argv.slice(3);
 
-const isScriptRun = args.includes("--script-run");
-
-const delivePathScriptRun = script => `./../src/js/run/${script}.js`;
-const delivePathLibRun = script => `./../lib/js/run/${script}.js`;
-const path =
-  (isScriptRun && delivePathScriptRun(script)) || delivePathLibRun(script);
-const apl = (isScriptRun && "babel-node") || "node";
+const isScriptsRun = process.env.npm_package_name === "dh-scripts-run";
+const apl = (isScriptsRun && "babel-node") || "node";
+const folder = (isScriptsRun && "src") || "lib";
+const path = `./../${folder}/js/run/${script}.js`;
 
 /* eslint-disable no-console */
 console.info(">> ", script, ": start");
