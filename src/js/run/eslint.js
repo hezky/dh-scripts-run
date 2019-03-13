@@ -1,5 +1,5 @@
-const CLIEngine = require("eslint").CLIEngine;
-const Sync = require("glob").GlobSync;
+import { CLIEngine } from "eslint";
+import { GlobSync } from "glob";
 
 const cli = new CLIEngine();
 const formatter = cli.getFormatter();
@@ -7,13 +7,13 @@ const cwd = process.cwd();
 
 const globOptions = { cwd, dot: true, nodir: true };
 const paths = [
-  cwd + "/src/**/*.js",
-  cwd + "/src/**/*.jsx",
-  cwd + "/test/**/*.js",
-  cwd + "/test/**/*.jsx"
-];
+  "/src/**/*.js",
+  "/src/**/*.jsx",
+  "/test/**/*.js",
+  "/test/**/*.jsx"
+].map(item => cwd + item);
 
-const existFilesInPath = path => Sync(path, globOptions).found.length !== 0;
+const existFilesInPath = path => GlobSync(path, globOptions).found.length !== 0;
 const executeOnPaths = paths.filter(path => existFilesInPath(path));
 const report = cli.executeOnFiles(executeOnPaths);
 

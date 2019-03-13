@@ -4,7 +4,7 @@
     "dh-run": "bin/dh-run.js"
   },
   "dependencies": {
-    "dh-dependency-base": "^0.0.4"
+    "dh-dependency-base": "^0.0.5"
   },
   "description": "package run scripts",
   "files": [
@@ -15,5 +15,5 @@
   "scripts": {
     "eslint": "./bin/dh-run.js eslint"
   },
-  "version": "0.0.6"
+  "version": "0.0.3"
 }

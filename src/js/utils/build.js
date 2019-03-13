@@ -1,6 +1,5 @@
-const existsSync = require("fs").existsSync;
-const mkdirSync = require("fs").mkdirSync;
-const spawnSync = require("child_process").spawnSync;
+import { existsSync, mkdirSync } from "fs";
+import { spawnSync } from "child_process";
 
 /* eslint-disable no-console */
 const compileBabel = (source, target) => {
@@ -14,6 +13,4 @@ const compileBabel = (source, target) => {
   }
 };
 
-module.exports = {
-  compileBabel
-};
+export { compileBabel };
