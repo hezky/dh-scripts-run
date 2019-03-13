@@ -16,5 +16,5 @@
     "build": "node ./bin/dh-run.js build --script-run",
     "eslint": "node ./bin/dh-run.js eslint --script-run"
   },
-  "version": "0.0.8"
+  "version": "0.0.9"
 }
