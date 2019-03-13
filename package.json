@@ -9,11 +9,12 @@
   "description": "package run scripts",
   "files": [
     "bin",
-    "src"
+    "lib"
   ],
   "name": "dh-scripts-run",
   "scripts": {
-    "eslint": "./bin/dh-run.js eslint"
+    "build": "node ./bin/dh-run.js build --script-run",
+    "eslint": "node ./bin/dh-run.js eslint --script-run"
   },
   "version": "0.0.7"
 }

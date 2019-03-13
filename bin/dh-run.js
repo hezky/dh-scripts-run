@@ -4,18 +4,20 @@ const spawnSync = require("child_process").spawnSync;
 const script = process.argv[2];
 const args = process.argv.slice(3);
 
-const rootPath = "./../";
-const srcPath = "src/js/";
-const runPath = "run/";
-const pathScript = rootPath + srcPath + runPath + script + ".js";
+const isScriptRun = args.includes("--script-run");
+
+const delivePathScriptRun = script => `./../src/js/run/${script}.js`;
+const delivePathLibRun = script => `./../lib/js/run/${script}.js`;
+const path =
+  (isScriptRun && delivePathScriptRun(script)) || delivePathLibRun(script);
+const apl = (isScriptRun && "babel-node") || "node";
 
 /* eslint-disable no-console */
-
 console.info(">> ", script, ": start");
 console.info("");
 console.time(script);
 
-spawnSync("babel-node", [require.resolve(pathScript)].concat(args), {
+spawnSync(apl, [require.resolve(path)].concat(args), {
   stdio: "inherit"
 });
 
