@@ -10,7 +10,7 @@ const testMocha = () => {
     fs.accessSync(DIR_TEST_MOCHA);
     const args = [
       "--require",
-      "js:babel-register",
+      "@babel/register",
       "--recursive",
       DIR_TEST_MOCHA
     ];
@@ -20,7 +20,7 @@ const testMocha = () => {
       console.error(res);
       process.exit(1);
     } else {
-      console.info("tested: ", res.stdout);
+      console.info(`${res.stdout}`);
     }
   } catch (e) {
     console.warn("Missing mocha tests.");

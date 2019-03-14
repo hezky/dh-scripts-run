@@ -9,7 +9,7 @@ const compileBabel = (source, target) => {
   if (res.status !== 0) {
     console.error("error: ", res);
   } else {
-    console.info("compiled: ", res.stdout);
+    console.info(`${res.stdout}`);
   }
 };
 

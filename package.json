@@ -13,8 +13,8 @@
   ],
   "name": "dh-scripts-run",
   "scripts": {
-    "build": "node ./bin/dh-run.js build --script-run",
-    "eslint": "node ./bin/dh-run.js eslint --script-run"
+    "build": "./bin/dh-run.js build",
+    "eslint": "./bin/dh-run.js eslint"
   },
   "version": "0.0.9"
 }
