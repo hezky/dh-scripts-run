@@ -6,6 +6,9 @@
   "dependencies": {
     "dh-dependency-base": "^0.0.5"
   },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^3.2.0"
+  },
   "description": "package run scripts",
   "files": [
     "bin",

@@ -1,4 +1,4 @@
-import { testMocha } from "./../utils/test.js";
+import { testMocha } from "utils/test.js";
 
 const lastEnv = process.env.NODE_ENV;
 process.env.NODE_ENV = "TEST";

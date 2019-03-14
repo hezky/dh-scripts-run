@@ -1,6 +1,6 @@
 import fs from "fs";
 import { spawnSync } from "child_process";
-import { TEST as DIR_TEST } from "./../consts/dirs";
+import { TEST as DIR_TEST } from "consts/dirs";
 
 const testMocha = () => {
   const cwd = process.cwd();
