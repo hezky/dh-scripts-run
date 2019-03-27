@@ -4,7 +4,7 @@
     "dh-run": "bin/dh-run.js"
   },
   "dependencies": {
-    "dh-dependency-base": "^0.0.5"
+    "dh-dependency-base": "^0.0.6"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^3.2.0"
