@@ -1,18 +1,17 @@
 import fs from "fs";
 import { spawnSync } from "child_process";
-import { TEST as DIR_TEST } from "consts/dirs";
+import { CWD_TEST } from "consts/dirs";
 
 const testMocha = () => {
-  const cwd = process.cwd();
-  const DIR_TEST_MOCHA = cwd + "/" + DIR_TEST + "mocha/";
+  const CWD_TEST_MOCHA = `${CWD_TEST}mocha/`;
   /* eslint no-console: 0 */
   try {
-    fs.accessSync(DIR_TEST_MOCHA);
+    fs.accessSync(CWD_TEST_MOCHA);
     const args = [
       "--require",
       "@babel/register",
       "--recursive",
-      DIR_TEST_MOCHA
+      CWD_TEST_MOCHA
     ];
     const res = spawnSync("mocha", args);
     if (res.status !== 0) {
