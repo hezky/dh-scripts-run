@@ -1,4 +1,3 @@
-//import { run } from "dh-scripts-run-eslint";
 import { run } from "scripts/eslint.js";
 
 const lastScriptsRun = process.env.DH_SCRIPTS_RUN;
