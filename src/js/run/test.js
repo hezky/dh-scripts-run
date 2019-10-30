@@ -1,6 +1,6 @@
-import { testMocha } from "utils/test.js";
+import { run } from "scripts/test.js";
 
-const lastEnv = process.env.NODE_ENV;
-process.env.NODE_ENV = "TEST";
-testMocha();
-process.env.NODE_ENV = lastEnv;
+const lastScriptsRun = process.env.DH_SCRIPTS_RUN;
+process.env.DH_SCRIPTS_RUN = "TEST";
+run();
+process.env.DH_SCRIPTS_RUN = lastScriptsRun;

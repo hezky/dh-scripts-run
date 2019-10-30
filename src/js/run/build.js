@@ -1,4 +1,6 @@
-import { CWD_LIB, CWD_SRC } from "consts/dirs.js";
-import { compileBabel } from "utils/build.js";
+import { run } from "scripts/build.js";
 
-compileBabel(CWD_SRC, CWD_LIB);
+const lastScriptsRun = process.env.DH_SCRIPTS_RUN;
+process.env.DH_SCRIPTS_RUN = "BUILD";
+run();
+process.env.DH_SCRIPTS_RUN = lastScriptsRun;

@@ -26,4 +26,8 @@ const testMocha = () => {
   }
 };
 
-export { testMocha };
+const run = () => {
+  testMocha();
+};
+
+export { run };

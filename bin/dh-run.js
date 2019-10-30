@@ -7,14 +7,14 @@ const args = process.argv.slice(3);
 const isScriptsRun = process.env.npm_package_name === "dh-scripts-run";
 const apl = (isScriptsRun && "babel-node") || "node";
 const folder = (isScriptsRun && "src") || "lib";
-const path = `./../${folder}/js/run/${script}.js`;
+const pathScript = `./../${folder}/js/run/${script}.js`;
 
 /* eslint-disable no-console */
 console.info(">> ", script, ": start");
 console.info("");
 console.time(script);
 
-spawnSync(apl, [require.resolve(path)].concat(args), {
+spawnSync(apl, [require.resolve(pathScript)].concat(args), {
   stdio: "inherit"
 });
 

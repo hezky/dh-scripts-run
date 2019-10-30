@@ -1,5 +1,6 @@
 import { existsSync, mkdirSync } from "fs";
 import { spawnSync } from "child_process";
+import { CWD_LIB, CWD_SRC } from "consts/dirs.js";
 
 /* eslint-disable no-console */
 const compileBabel = (source, target) => {
@@ -13,4 +14,8 @@ const compileBabel = (source, target) => {
   }
 };
 
-export { compileBabel };
+const run = () => {
+  compileBabel(CWD_SRC, CWD_LIB);
+};
+
+export { run };
