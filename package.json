@@ -19,5 +19,5 @@
     "build": "./bin/dh-run.js build",
     "eslint": "./bin/dh-run.js eslint"
   },
-  "version": "0.0.16"
+  "version": "0.0.17"
 }
