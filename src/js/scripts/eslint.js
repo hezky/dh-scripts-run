@@ -7,11 +7,11 @@ const run = () => {
   const cwd = process.cwd();
   const globOptions = { cwd, dot: true, nodir: true };
   const PATHS_WITH_FILES = [`/${DIR_SRC}**/*.js`, `/${DIR_TEST}**/*.js`];
-  const paths = PATHS_WITH_FILES.map(item => `${cwd}${item}`);
+  const paths = PATHS_WITH_FILES.map((item) => `${cwd}${item}`);
 
-  const existFilesInPath = path =>
+  const existFilesInPath = (path) =>
     GlobSync(path, globOptions).found.length !== 0;
-  const executeOnPaths = paths.filter(path => existFilesInPath(path));
+  const executeOnPaths = paths.filter((path) => existFilesInPath(path));
   const report = cli.executeOnFiles(executeOnPaths);
 
   /* eslint no-console: 0 */

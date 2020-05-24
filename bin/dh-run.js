@@ -15,7 +15,7 @@ console.info("");
 console.time(script);
 
 spawnSync(apl, [require.resolve(pathScript)].concat(args), {
-  stdio: "inherit"
+  stdio: "inherit",
 });
 
 console.info("");

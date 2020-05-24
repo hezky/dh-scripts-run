@@ -11,7 +11,7 @@ const testMocha = () => {
       "--require",
       "@babel/register",
       "--recursive",
-      CWD_TEST_MOCHA
+      CWD_TEST_MOCHA,
     ];
     const res = spawnSync("mocha", args);
     if (res.status !== 0) {
