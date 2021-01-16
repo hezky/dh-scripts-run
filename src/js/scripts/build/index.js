@@ -4,7 +4,7 @@ import { CWD_LIB, CWD_SRC } from "consts/dirs.js";
 
 /* eslint-disable no-console */
 const compileBabel = (source, target) => {
-  if (!existsSync("lib")) mkdirSync("lib");
+  if (!existsSync(CWD_LIB)) mkdirSync(CWD_LIB, { recursive: true });
   const args = [source, "--no-comments", "--out-dir", target];
   const res = spawnSync("babel", args);
   if (res.status !== 0) {
