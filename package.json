@@ -4,7 +4,7 @@
     "dh-run": "bin/dh-run.js"
   },
   "dependencies": {
-    "dh-dependency-base": "^0.0.21"
+    "dh-dependency-base": "^0.0.22"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^4.1.0"
@@ -18,7 +18,7 @@
   "scripts": {
     "build": "./bin/dh-run.js build",
     "eslint": "./bin/dh-run.js eslint",
-    "prepublish": "./bin/dh-run.js prepublish"
+    "prepublishOnly": "./bin/dh-run.js prepublishOnly"
   },
   "version": "0.0.22"
 }
