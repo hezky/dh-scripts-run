@@ -17,6 +17,7 @@
   "name": "dh-scripts-run",
   "scripts": {
     "build": "./bin/dh-run.js build",
+    "clean": "./bin/dh-run.js clean",
     "eslint": "./bin/dh-run.js eslint",
     "prepublishOnly": "./bin/dh-run.js prepublishOnly"
   },
