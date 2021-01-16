@@ -1,4 +1,4 @@
-import { run as buildRun } from "scripts/prepublish";
+import { run as buildRun } from "scripts/build";
 
 const run = () => {
   buildRun();
