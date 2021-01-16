@@ -1,4 +1,4 @@
-import { run } from "scripts/test.js";
+import { run } from "scripts/test";
 
 const lastScriptsRun = process.env.DH_SCRIPTS_RUN;
 process.env.DH_SCRIPTS_RUN = "TEST";
