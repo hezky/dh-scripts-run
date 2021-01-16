@@ -1,7 +1,9 @@
-import { run as buildRun } from "scripts/build";
+import { run as runClean } from "scripts/clean";
+import { run as runBuild } from "scripts/build";
 
 const run = () => {
-  buildRun();
+  runClean();
+  runBuild();
 };
 
 export { run };
