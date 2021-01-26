@@ -21,5 +21,5 @@
     "eslint": "./bin/dh-run.js eslint",
     "prepublishOnly": "./bin/dh-run.js prepublishOnly"
   },
-  "version": "0.1.1"
+  "version": "0.1.2"
 }
