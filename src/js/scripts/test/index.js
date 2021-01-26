@@ -13,13 +13,9 @@ const testMocha = () => {
       "--recursive",
       CWD_TEST_MOCHA,
     ];
-    const res = spawnSync("mocha", args);
+    const res = spawnSync("mocha", args, { stdio: "inherit" });
     if (res.status !== 0) {
-      console.error("error: ");
-      console.error(res);
       process.exit(1);
-    } else {
-      console.info(`${res.stdout}`);
     }
   } catch (e) {
     console.warn("Missing mocha tests.");
