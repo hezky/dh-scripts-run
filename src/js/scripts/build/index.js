@@ -15,7 +15,7 @@ const compileBabel = (source, target) => {
 };
 
 const run = () => {
-  compileBabel(CWD_SRC_JS, CWD_SRC_JS);
+  compileBabel(CWD_SRC_JS, CWD_LIB_JS);
 };
 
 export { run };
