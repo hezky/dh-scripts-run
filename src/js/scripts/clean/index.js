@@ -1,12 +1,12 @@
-import { removeSync } from "fs";
+import { existsSync, removeSync } from "fs";
 import { CWD_DIST, CWD_LIB } from "consts/dirs.js";
 
-const rmDir = (dir) => {
+const rmDir = (path) => {
   try {
-    removeSync(dir);
+    existsSync(path) && removeSync(path);
   } catch (e) {
     /* eslint no-console: 0 */
-    console.error("Can not delete " + dir + " directory.");
+    console.error("Can not delete " + path + " directory.");
     process.exit(1);
   }
 };
