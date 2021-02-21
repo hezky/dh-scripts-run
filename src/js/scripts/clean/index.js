@@ -1,19 +1,20 @@
-import { existsSync, removeSync } from "fs";
-import { CWD_DIST, CWD_LIB } from "consts/dirs.js";
+import { existsSync, rmdir } from "fs";
+import { CWD, DIST, LIB } from "consts/dirs.js";
 
-const rmDir = (path) => {
+const rmDirX = (dir) => {
   try {
-    existsSync(path) && removeSync(path);
+    const path = `${CWD}/${dir}`;
+    existsSync(path) && rmdir(path, { recursive: true });
   } catch (e) {
     /* eslint no-console: 0 */
-    console.error("Can not delete " + path + " directory.");
+    console.error("Can not delete " + dir + " directory.");
     process.exit(1);
   }
 };
 
 const run = () => {
-  rmDir(CWD_DIST);
-  rmDir(CWD_LIB);
+  rmDirX(DIST);
+  rmDirX(LIB);
 };
 
 export { run };
