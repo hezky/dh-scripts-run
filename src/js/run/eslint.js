@@ -1,6 +1,4 @@
 import { run } from "scripts/eslint";
+import runF from "utils/runF";
 
-const lastScriptsRun = process.env.DH_SCRIPTS_RUN;
-process.env.DH_SCRIPTS_RUN = "ESLINT";
-run();
-process.env.DH_SCRIPTS_RUN = lastScriptsRun;
+runF(run, "eslint");

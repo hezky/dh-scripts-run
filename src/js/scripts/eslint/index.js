@@ -1,6 +1,7 @@
 import { CLIEngine } from "eslint";
 import { GlobSync } from "glob";
 import { DIR_SRC_JS, DIR_TEST } from "consts/dirs.js";
+import { logError } from "utils/log.js";
 
 const run = () => {
   const cli = new CLIEngine();
@@ -14,10 +15,9 @@ const run = () => {
   const executeOnPaths = paths.filter((path) => existFilesInPath(path));
   const report = cli.executeOnFiles(executeOnPaths);
 
-  /* eslint no-console: 0 */
   if (report.errorCount > 0 || report.warningCount > 0) {
     const formatter = cli.getFormatter();
-    console.error(formatter(report.results));
+    logError(formatter(report.results));
     report.errorCount > 0 && process.exit(1);
   }
 };

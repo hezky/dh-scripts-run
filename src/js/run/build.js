@@ -1,6 +1,4 @@
 import { run } from "scripts/build";
+import runF from "utils/runF";
 
-const lastScriptsRun = process.env.DH_SCRIPTS_RUN;
-process.env.DH_SCRIPTS_RUN = "BUILD";
-run();
-process.env.DH_SCRIPTS_RUN = lastScriptsRun;
+runF(run, "build");

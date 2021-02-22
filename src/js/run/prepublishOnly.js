@@ -1,6 +1,4 @@
 import { run } from "scripts/prepublishOnly";
+import runF from "utils/runF";
 
-const lastScriptsRun = process.env.DH_SCRIPTS_RUN;
-process.env.DH_SCRIPTS_RUN = "PREPUBLISHONLY";
-run();
-process.env.DH_SCRIPTS_RUN = lastScriptsRun;
+runF(run, "prepublishOnly");

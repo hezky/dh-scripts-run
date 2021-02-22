@@ -1,10 +1,11 @@
 import fs from "fs";
 import { spawnSync } from "child_process";
+
 import { CWD_TEST } from "consts/dirs";
+import { logWarning } from "utils/log";
 
 const testMocha = () => {
   const CWD_TEST_MOCHA = `${CWD_TEST}mocha/`;
-  /* eslint no-console: 0 */
   try {
     fs.accessSync(CWD_TEST_MOCHA);
     const args = [
@@ -18,7 +19,7 @@ const testMocha = () => {
       process.exit(1);
     }
   } catch (e) {
-    console.warn("Missing mocha tests.");
+    logWarning("Missing mocha tests.");
   }
 };
 

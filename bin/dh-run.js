@@ -12,12 +12,16 @@ const pathScript = `./../${folder}/js/run/${script}.js`;
 /* eslint-disable no-console */
 console.info(">> ", script, ": start");
 console.info("");
+console.info("--------------------------------------------");
+console.info("");
 console.time(script);
 
 spawnSync(apl, [require.resolve(pathScript)].concat(args), {
   stdio: "inherit",
 });
 
+console.info("");
+console.info("--------------------------------------------");
 console.info("");
 console.timeEnd(script);
 console.info("");
