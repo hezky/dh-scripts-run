@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import util from "util";
 
 const NEWLINE = "\n";
 const DOUBLE_NEWLINE = `${NEWLINE}${NEWLINE}`;
@@ -18,17 +19,26 @@ const clearDisplay = () => {
 };
 
 const logError = (msg) => {
-  console.log(CHALK_COLOR_ERROR(MSG_ERROR(msg)));
+  logT(CHALK_COLOR_ERROR, MSG_ERROR, msg);
 };
 const logInfo = (msg) => {
-  console.log(CHALK_COLOR_INFO(MSG_INFO(msg)));
+  logT(CHALK_COLOR_INFO, MSG_INFO, msg);
 };
 const logProc = (msg) => {
-  console.log(CHALK_COLOR_PROCESS(MSG_PROCESS(msg)));
+  logT(CHALK_COLOR_PROCESS, MSG_PROCESS, msg);
 };
 const logWarning = (msg) => {
-  console.log(CHALK_COLOR_WARNING(MSG_WARNING(msg)));
+  logT(CHALK_COLOR_WARNING, MSG_WARNING, msg);
 };
+
+const logT = (chalkColor, msgTemplate, msg) => {
+  console.log(chalkColor(msgTemplate(transformMsg(msg))));
+};
+
+const transformMsg = (msg) =>
+  ((Array.isArray(msg) || (typeof msg === "object" && msg !== null)) &&
+    util.format(msg)) ||
+  msg;
 
 export {
   DOUBLE_NEWLINE,
