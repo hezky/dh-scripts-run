@@ -1,8 +1,8 @@
 import { existsSync, mkdirSync } from "fs";
 import { spawnSync } from "child_process";
 
-import { CWD_LIB_JS, CWD_SRC_JS } from "consts/dirs.js";
-import { logError } from "utils/log.js";
+import { CWD_LIB_JS, CWD_SRC_JS } from "consts/dirs";
+import { logError } from "utils/log";
 
 const compileBabel = (source, target) => {
   if (!existsSync(CWD_LIB_JS)) mkdirSync(CWD_LIB_JS, { recursive: true });
@@ -14,9 +14,6 @@ const compileBabel = (source, target) => {
 };
 
 const run = () => {
-  let buf = Buffer.from("abc");
-  console.log("Buffer >> ", Buffer.isBuffer(buf));
-  logError(buf.toString());
   compileBabel(CWD_SRC_JS, CWD_LIB_JS);
 };
 

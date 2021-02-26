@@ -1,4 +1,4 @@
-import { logProc } from "utils/log.js";
+import { logProc } from "utils/log";
 
 const runF = (run, name) => {
   const lastScriptsRun = process.env.DH_SCRIPTS_RUN;

@@ -1,7 +1,8 @@
 import { CLIEngine } from "eslint";
 import { GlobSync } from "glob";
-import { DIR_SRC_JS, DIR_TEST } from "consts/dirs.js";
-import { logError } from "utils/log.js";
+
+import { DIR_SRC_JS, DIR_TEST } from "consts/dirs";
+import { logError } from "utils/log";
 
 const run = () => {
   const cli = new CLIEngine();

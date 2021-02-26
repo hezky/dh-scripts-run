@@ -1,7 +1,7 @@
 import { existsSync, rmdir } from "fs";
 
-import { CWD, DIR_DIST, DIR_LIB } from "consts/dirs.js";
-import { logError, logInfo } from "utils/log.js";
+import { CWD, DIR_DIST, DIR_LIB } from "consts/dirs";
+import { logError, logInfo } from "utils/log";
 
 const rmDirFolder = (dir) => {
   try {
