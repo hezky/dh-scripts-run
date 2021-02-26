@@ -8,7 +8,7 @@ const rmDir = (dir) => {
     const path = `${CWD}/${dir}`;
     existsSync(path) && rmdir(path, { recursive: true });
   } catch (e) {
-    logError("Can not delete " + dir + " directory.");
+    logError(`Can not delete ${dir} directory.`);
     process.exit(1);
   }
 };

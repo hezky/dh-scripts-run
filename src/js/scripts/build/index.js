@@ -9,7 +9,7 @@ const compileBabel = (source, target) => {
   const args = [source, "--no-comments", "--out-dir", target];
   const res = spawnSync("babel", args);
   if (res.status !== 0) {
-    logError("error: ", res);
+    logError(res);
   }
 };
 
