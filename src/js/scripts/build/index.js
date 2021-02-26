@@ -14,6 +14,9 @@ const compileBabel = (source, target) => {
 };
 
 const run = () => {
+  let buf = Buffer.from("abc");
+  console.log("Buffer >> ", Buffer.isBuffer(buf));
+  logError(buf.toString());
   compileBabel(CWD_SRC_JS, CWD_LIB_JS);
 };
 

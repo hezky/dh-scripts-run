@@ -1,5 +1,6 @@
 import chalk from "chalk";
-import util from "util";
+
+import transformMsg from "./transformMsg";
 
 const NEWLINE = "\n";
 const DOUBLE_NEWLINE = `${NEWLINE}${NEWLINE}`;
@@ -34,11 +35,6 @@ const logWarning = (msg) => {
 const logT = (chalkColor, msgTemplate, msg) => {
   console.log(chalkColor(msgTemplate(transformMsg(msg))));
 };
-
-const transformMsg = (msg) =>
-  ((Array.isArray(msg) || (typeof msg === "object" && msg !== null)) &&
-    util.format(msg)) ||
-  msg;
 
 export {
   DOUBLE_NEWLINE,

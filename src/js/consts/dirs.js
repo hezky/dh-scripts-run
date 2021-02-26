@@ -20,6 +20,7 @@ export {
   CWD_LIB_JS,
   CWD_SRC_JS,
   CWD_TEST,
+  DIR_DIST,
   DIR_LIB,
   DIR_LIB_JS,
   DIR_SRC_JS,

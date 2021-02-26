@@ -1,22 +1,27 @@
 import { existsSync, rmdir } from "fs";
+
 import { CWD, DIR_DIST, DIR_LIB } from "consts/dirs.js";
+import { logError, logInfo } from "utils/log.js";
 
-import { logError } from "utils/log.js";
-
-const _rmDir = (dir) => {
+const rmDirFolder = (dir) => {
   try {
     const path = `${CWD}/${dir}`;
-    console.log("path >> ", path);
-    existsSync(path) && rmdir(path, { recursive: true });
+    if (existsSync(path)) {
+      rmdir(path, { recursive: true }, () => {
+        logInfo(`deleted ${path}`);
+      });
+    } else {
+      logInfo(`not exist ${path}`);
+    }
   } catch (e) {
-    logError(`Can not delete ${dir} directory.`);
+    logError(`can not delete ${dir} directory`);
     process.exit(1);
   }
 };
 
 const run = () => {
-  _rmDir(DIR_DIST);
-  _rmDir(DIR_LIB);
+  rmDirFolder(DIR_DIST);
+  rmDirFolder(DIR_LIB);
 };
 
 export { run };
