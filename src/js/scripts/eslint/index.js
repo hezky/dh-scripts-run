@@ -7,9 +7,8 @@ const run = () => {
   const cli = new CLIEngine();
   const cwd = process.cwd();
   const globOptions = { cwd, dot: true, nodir: true };
-  const PATHS_WITH_FILES = [`/${DIR_SRC_JS}**/*.js`, `/${DIR_TEST}**/*.js`];
+  const PATHS_WITH_FILES = [`/${DIR_SRC_JS}/**/*.js`, `/${DIR_TEST}/**/*.js`];
   const paths = PATHS_WITH_FILES.map((item) => `${cwd}${item}`);
-
   const existFilesInPath = (path) =>
     GlobSync(path, globOptions).found.length !== 0;
   const executeOnPaths = paths.filter((path) => existFilesInPath(path));

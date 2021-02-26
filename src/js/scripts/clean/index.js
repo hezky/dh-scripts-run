@@ -3,7 +3,7 @@ import { CWD, DIST, LIB } from "consts/dirs.js";
 
 import { logError } from "utils/log.js";
 
-const rmDir = (dir) => {
+const _rmDir = (dir) => {
   try {
     const path = `${CWD}/${dir}`;
     existsSync(path) && rmdir(path, { recursive: true });
@@ -14,8 +14,8 @@ const rmDir = (dir) => {
 };
 
 const run = () => {
-  rmDir(DIST);
-  rmDir(LIB);
+  _rmDir(DIST);
+  _rmDir(LIB);
 };
 
 export { run };

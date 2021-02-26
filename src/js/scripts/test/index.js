@@ -5,7 +5,7 @@ import { CWD_TEST } from "consts/dirs";
 import { logWarning } from "utils/log";
 
 const testMocha = () => {
-  const CWD_TEST_MOCHA = `${CWD_TEST}mocha/`;
+  const CWD_TEST_MOCHA = `${CWD_TEST}/mocha/`;
   try {
     fs.accessSync(CWD_TEST_MOCHA);
     const args = [
