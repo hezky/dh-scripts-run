@@ -1,4 +1,3 @@
-import { run } from "scripts/prepublishOnly";
-import runF from "utils/runF";
+import { runPrepublishOnly } from "scripts";
 
-runF(run);
+runPrepublishOnly();

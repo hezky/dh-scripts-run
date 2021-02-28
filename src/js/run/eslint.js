@@ -1,4 +1,3 @@
-import { run } from "scripts/eslint";
-import runF from "utils/runF";
+import { runEslint } from "scripts";
 
-runF(run);
+runEslint();

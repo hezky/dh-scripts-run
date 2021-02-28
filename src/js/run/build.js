@@ -1,4 +1,3 @@
-import { run } from "scripts/build";
-import runF from "utils/runF";
+import { runBuild } from "scripts";
 
-runF(run);
+runBuild();

@@ -1,4 +1,3 @@
-import { run } from "scripts/clean";
-import runF from "utils/runF";
+import { runClean } from "scripts";
 
-runF(run);
+runClean();
