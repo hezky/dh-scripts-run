@@ -1,11 +1,8 @@
-import { run as runBuild } from "scripts/build";
-import { run as runClean } from "scripts/clean";
-
-import runF from "utils/runF";
+import { runBuild, runClean } from "scripts";
 
 const run = () => {
-  runF(runClean);
-  runF(runBuild);
+  runClean();
+  runBuild();
 };
 
 export { run };
