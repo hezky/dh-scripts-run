@@ -1,7 +1,10 @@
 import { logProc } from "utils/log";
 
-const runF = (run, name) => {
+import determineName from "./determineName";
+
+const runF = (run) => {
   const lastScriptsRun = process.env.DH_SCRIPTS_RUN;
+  const name = determineName(run);
   process.env.DH_SCRIPTS_RUN = name;
   logProc(`running ${name}`);
   run();
