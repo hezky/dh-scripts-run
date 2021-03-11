@@ -8,13 +8,13 @@ const rmDirFolder = (dir) => {
     const path = `${CWD}/${dir}`;
     if (existsSync(path)) {
       rmdir(path, { recursive: true }, () => {
-        logInfo(`deleted ${path}`);
+        logInfo(`removed ${path}`);
       });
     } else {
       logInfo(`not exist ${path}`);
     }
   } catch (e) {
-    logError(`can not delete ${dir} directory`);
+    logError(`can not remove ${dir} directory`);
     process.exit(1);
   }
 };
