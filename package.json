@@ -17,12 +17,12 @@
     "bin",
     "lib"
   ],
-  "name": "dh-scripts-run",
+  "name": "@dh-js/scripts-run",
   "scripts": {
     "build": "./bin/dh-run.js build",
     "clean": "./bin/dh-run.js clean",
     "eslint": "./bin/dh-run.js eslint",
     "prepublishOnly": "./bin/dh-run.js prepublishOnly"
   },
-  "version": "0.1.20"
+  "version": "0.1.21"
 }
