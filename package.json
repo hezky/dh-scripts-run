@@ -4,10 +4,10 @@
     "dh-run": "bin/dh-run.js"
   },
   "dependencies": {
-    "dh-dependency-base": "^0.0.37",
+    "dh-dependency-base": "^0.0.38",
     "dotenv": "^8.2.0",
-    "chai": "^4.3.0",
-    "mocha": "^8.3.0"
+    "chai": "^4.3.3",
+    "mocha": "^8.3.1"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^4.1.0"
