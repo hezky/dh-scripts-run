@@ -4,7 +4,7 @@
     "dh-run": "bin/dh-run.js"
   },
   "dependencies": {
-    "dh-dependency-base": "^0.0.38",
+    "@dh-js/dependency-base": "^0.0.43",
     "dotenv": "^8.2.0",
     "chai": "^4.3.3",
     "mocha": "^8.3.1"
