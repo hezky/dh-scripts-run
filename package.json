@@ -25,5 +25,5 @@
     "prepublishOnly": "./bin/dh-run.js prepublishOnly",
     "abc": "./bin/dh-run.js prepublishOnly"
   },
-  "version": "0.1.29"
+  "version": "0.1.30"
 }
