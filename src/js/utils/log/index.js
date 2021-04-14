@@ -10,7 +10,7 @@ const CHALK_COLOR_INFO = chalk.cyan;
 const CHALK_COLOR_PROCESS = chalk.green;
 const CHALK_COLOR_WARNING = chalk.keyword("orange");
 
-const MSG_ERROR = (msg) => `ee : ${msg}`;
+const MSG_ERROR = (msg) => `${NEWLINE}ee : ${msg}${NEWLINE}`;
 const MSG_INFO = (msg) => `ii : ${msg}`;
 const MSG_PROCESS = (msg) => `>> : ${msg}`;
 const MSG_WARNING = (msg) => `ww : ${msg}`;
