@@ -21,6 +21,7 @@
     "lib"
   ],
   "homepage": "https://github.com/hezky/dh-scripts-run#readme",
+  "license": "MIT",
   "name": "@dh-scripts/run",
   "repository": {
     "type": "git",
