@@ -3,6 +3,9 @@
   "bin": {
     "dh-run": "bin/dh-run.js"
   },
+  "bugs": {
+    "url": "https://github.com/hezky/dh-scripts-run/issues"
+  },
   "dependencies": {
     "@dh-dependency/base": "^0.0.47",
     "dotenv": "^8.2.0",
@@ -17,7 +20,12 @@
     "bin",
     "lib"
   ],
+  "homepage": "https://github.com/hezky/dh-scripts-run#readme",
   "name": "@dh-scripts/run",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hezky/dh-scripts-run"
+  },
   "scripts": {
     "build": "./bin/dh-run.js build",
     "clean": "./bin/dh-run.js clean",
