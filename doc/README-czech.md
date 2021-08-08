@@ -1,4 +1,4 @@
-# @dh-js/scripts-run
+# @dh-scripts/run
 
 [Použití v anglickém jazyce (Readme in English)](https://github.com/hezky/dh-scripts-run/blob/master/README.md)
 
@@ -23,10 +23,10 @@ Spuštění testů nad adresářem "src/js/".
 
 ## Použití
 
-Do svého projektu nainstalujte balíček **@dh-js/scripts-run**.
+Do svého projektu nainstalujte balíček **@dh-scripts/run**.
 V adresáři projektu spusťte příkaz:
 ``` javascript
-$ npm install --save @dh-js/scripts-run
+$ npm install --save @dh-scripts/run
 ```
 
 Do konfiguračního souboru **package.json** přidejte následující:

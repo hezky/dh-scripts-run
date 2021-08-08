@@ -1,4 +1,4 @@
-# @dh-js/scripts-run
+# @dh-scripts/run
 
 [Readme in Czech (Readme v Češtině)](https://github.com/hezky/dh-scripts-run/blob/master/doc/README-czech.md)
 
@@ -23,10 +23,10 @@ Run tests over the directory "src/js/".
 
 ## Usage
 
-In your project install the package **@dh-js/scripts-run**.
+In your project install the package **@dh-scripts/run**.
 In the project directory, run the command:
 ``` javascript
-$ npm install --save @dh-js/scripts-run
+$ npm install --save @dh-scripts/run
 ```
 
 Add to the configuration file ** package.json **:
