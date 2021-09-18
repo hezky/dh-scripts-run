@@ -1,3 +1,4 @@
+
 # @dh-scripts/run
 
 [Použití v anglickém jazyce (Readme in English)](https://github.com/hezky/dh-scripts-run/blob/master/README.md)
@@ -14,6 +15,9 @@ Smazání adresářů "div/", "lib/".
 
 ### skript eslint
 Spuštění statické analýzy kódu nástrojem eslint nad adresáři "src/js/", "test/".
+
+### skript devel
+Spuštění příkladu.
 
 ### skript prepublishOnly
 Skript životního cyklu prepublishOnly. Spouští se jen při příkazu "npm publish". Provedení skriptu před tím než je spuštěno samotné "npm publish" Aktuální skript spustí skripty "clean" a "build".

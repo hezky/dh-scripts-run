@@ -12,6 +12,9 @@ Compile the babel code into ecmascript above the directory "src/js/". The compil
 ### script clean
 Delete the directories "div/", "lib/".
 
+### script devel
+Run the example. 
+
 ### script eslint
 Run static code analysis with eslint over the directories "src/js/", "test/".
 

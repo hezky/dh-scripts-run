@@ -1,14 +1,20 @@
 import { CLIEngine } from "eslint";
 import { GlobSync } from "glob";
 
-import { DIR_SRC_JS, DIR_TEST } from "consts/dirs";
+import { DIR_DEVEL, DIR_SRC_JS, DIR_TEST } from "consts/dirs";
 import { logError } from "utils/log";
 
 const run = () => {
   const cli = new CLIEngine();
   const cwd = process.cwd();
   const globOptions = { cwd, dot: true, nodir: true };
-  const PATHS_WITH_FILES = [`/${DIR_SRC_JS}/**/*.js`, `/${DIR_TEST}/**/*.js`];
+  const PATHS_WITH_FILES = [
+    `/${DIR_DEVEL}/**/*.js`,
+    `/${DIR_DEVEL}/**/*.jsx`,
+    `/${DIR_SRC_JS}/**/*.js`,
+    `/${DIR_SRC_JS}/**/*.jsx`,
+    `/${DIR_TEST}/**/*.js`,
+  ];
   const paths = PATHS_WITH_FILES.map((item) => `${cwd}${item}`);
   const existFilesInPath = (path) =>
     GlobSync(path, globOptions).found.length !== 0;
