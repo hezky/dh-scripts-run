@@ -1,31 +1,65 @@
-import { CLIEngine } from "eslint";
+const { ESLint } = require("eslint");
 import { GlobSync } from "glob";
 
 import { DIR_DEVEL, DIR_SRC_JS, DIR_TEST } from "consts/dirs";
 import { logError } from "utils/log";
 
 const run = () => {
-  const cli = new CLIEngine();
-  const cwd = process.cwd();
-  const globOptions = { cwd, dot: true, nodir: true };
-  const PATHS_WITH_FILES = [
-    `/${DIR_DEVEL}/**/*.js`,
-    `/${DIR_DEVEL}/**/*.jsx`,
-    `/${DIR_SRC_JS}/**/*.js`,
-    `/${DIR_SRC_JS}/**/*.jsx`,
-    `/${DIR_TEST}/**/*.js`,
-  ];
-  const paths = PATHS_WITH_FILES.map((item) => `${cwd}${item}`);
-  const existFilesInPath = (path) =>
-    GlobSync(path, globOptions).found.length !== 0;
-  const executeOnPaths = paths.filter((path) => existFilesInPath(path));
-  const report = cli.executeOnFiles(executeOnPaths);
+  (async function main(eslintFix = false) {
+    // -----------------------------------------
+    // 0] Settings
+    const cwd = process.cwd();
+    const globOptions = { cwd, dot: true, nodir: true };
+    const paths = [
+      `/${DIR_DEVEL}/**/*.js`,
+      `/${DIR_DEVEL}/**/*.jsx`,
+      `/${DIR_SRC_JS}/**/*.js`,
+      `/${DIR_SRC_JS}/**/*.jsx`,
+      `/${DIR_TEST}/**/*.js`,
+    ];
+    const existFilesInPath = (path) =>
+      GlobSync(path, globOptions).found.length !== 0;
+    const executeOnPaths = paths.filter((path) => existFilesInPath(path));
+    // -----------------------------------------
 
-  if (report.errorCount > 0 || report.warningCount > 0) {
-    const formatter = cli.getFormatter();
-    logError(formatter(report.results));
-    report.errorCount > 0 && process.exit(1);
-  }
+    // -----------------------------------------
+    // 1] Create an instance with the `fix` option
+    var eslint = new ESLint({
+      fix: eslintFix,
+      useEslintrc: true,
+    });
+    // -----------------------------------------
+
+    // -----------------------------------------
+    // 2] Lint files. This doesn't modify target files.
+    const results = await eslint.lintFiles(executeOnPaths);
+    // -----------------------------------------
+
+    // -----------------------------------------
+    // 3] Modify the files with the fixed code.
+    if (eslintFix) {
+      await ESLint.outputFixes(results);
+    }
+    // -----------------------------------------
+
+    // -----------------------------------------
+    // 4. Format the results.
+    const formatter = await eslint.loadFormatter("stylish");
+    const resultText = formatter.format(results);
+    // -----------------------------------------
+
+    // -----------------------------------------
+    if (
+      (typeof resultText === "string" || resultText instanceof String) &&
+      resultText.length
+    ) {
+      console.log(resultText);
+    }
+    // -----------------------------------------
+  })().catch((error) => {
+    logError(error);
+    process.exit(1);
+  });
 };
 
 export { run };
