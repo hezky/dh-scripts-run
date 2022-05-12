@@ -2,18 +2,29 @@ const DIR_DEVEL = "devel";
 const DIR_DIST = "dist";
 const DIR_LIB = "lib";
 const DIR_LIB_JS = `${DIR_LIB}/js`;
+const DIR_NODE_MODULES = `node_modules`;
 
 const DIR_SRC_JS = "src/js";
 const DIR_TEST = "test";
 
+const PARRENT_FOLDER = (path, deep = 1) => {
+  let res = path;
+  for (let i = 0; i < deep; i++) {
+    res = res.substring(0, res.lastIndexOf("/"));
+  }
+  return res;
+};
+
 const CWD = process.cwd();
-const CWD_DIST = `${CWD}/${DIR_DIST}`;
 const CWD_DEVEL = `${CWD}/${DIR_DEVEL}`;
+const CWD_DIST = `${CWD}/${DIR_DIST}`;
 const CWD_LIB = `${CWD}/${DIR_LIB}`;
 const CWD_LIB_JS = `${CWD}/${DIR_LIB_JS}`;
-
 const CWD_SRC_JS = `${CWD}/${DIR_SRC_JS}`;
 const CWD_TEST = `${CWD}/${DIR_TEST}`;
+
+const RUN = PARRENT_FOLDER(__dirname, 3);
+const RUN_MODULES = `${RUN}/${DIR_NODE_MODULES}`;
 
 export {
   CWD,
@@ -29,4 +40,6 @@ export {
   DIR_LIB_JS,
   DIR_SRC_JS,
   DIR_TEST,
+  RUN,
+  RUN_MODULES,
 };
