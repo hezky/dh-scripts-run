@@ -1,4 +1,4 @@
-import { existsSync, rmdirSync } from "fs";
+import { existsSync, rmSync } from "fs";
 
 import { CWD, DIR_DIST, DIR_LIB } from "consts/dirs";
 import { logError, logInfo } from "utils/log";
@@ -7,7 +7,7 @@ const rmDirFolder = (dir) => {
   try {
     const path = `${CWD}/${dir}`;
     if (existsSync(path)) {
-      rmdirSync(path, { recursive: true });
+      rmSync(path, { recursive: true });
       logInfo(`removed ${path}`);
     } else {
       logInfo(`not exist ${path}`);
