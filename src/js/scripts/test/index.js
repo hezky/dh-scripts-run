@@ -1,20 +1,18 @@
 import fs from "fs";
 import { spawnSync } from "child_process";
 
-import { CWD_TEST } from "consts/dirs";
+import { CWD_TEST, RUN_MODULES } from "consts/dirs";
 import { logWarning } from "utils/log";
 
+const CWD_TEST_MOCHA = `${CWD_TEST}/mocha/`;
+const RUN_BABEL = `${RUN_MODULES}/@babel/register/lib/index.js`;
+const RUN_MOCHA = `${RUN_MODULES}/mocha/bin/mocha.js`;
+
 const testMocha = () => {
-  const CWD_TEST_MOCHA = `${CWD_TEST}/mocha/`;
   try {
     fs.accessSync(CWD_TEST_MOCHA);
-    const args = [
-      "--require",
-      "@babel/register",
-      "--recursive",
-      CWD_TEST_MOCHA,
-    ];
-    const res = spawnSync("mocha", args, { stdio: "inherit" });
+    const args = ["--require", RUN_BABEL, "--recursive", CWD_TEST_MOCHA];
+    const res = spawnSync(RUN_MOCHA, args, { stdio: "inherit" });
     if (res.status !== 0) {
       process.exit(1);
     }

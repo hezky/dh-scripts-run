@@ -10,13 +10,14 @@ const run = () => {
     // 0] Settings
     const cwd = process.cwd();
     const globOptions = { cwd, dot: true, nodir: true };
-    const paths = [
+    const PATHS_WITH_FILES = [
       `/${DIR_DEVEL}/**/*.js`,
       `/${DIR_DEVEL}/**/*.jsx`,
       `/${DIR_SRC_JS}/**/*.js`,
       `/${DIR_SRC_JS}/**/*.jsx`,
       `/${DIR_TEST}/**/*.js`,
     ];
+    const paths = PATHS_WITH_FILES.map((item) => `${cwd}${item}`);
     const existFilesInPath = (path) =>
       GlobSync(path, globOptions).found.length !== 0;
     const executeOnPaths = paths.filter((path) => existFilesInPath(path));
