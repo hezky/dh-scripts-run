@@ -58,6 +58,7 @@ if (fs.existsSync(pathToScript)) {
   console.info("");
   console.info(">> ", argScript, ": end");
 } else {
+  console.info("");
   console.info("--------------------------------------------");
   console.info("");
   console.info("UNKNOWN SCRIPT - ", argScript);
