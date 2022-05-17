@@ -14,4 +14,4 @@ const run = () => {
   }
 };
 
-export { run };
+export default run;

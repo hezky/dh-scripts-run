@@ -32,6 +32,7 @@
     "clean": "./bin/dh-run.js clean",
     "devel": "./bin/dh-run.js devel",
     "eslint": "./bin/dh-run.js eslint",
+    "eslint:fix": "./bin/dh-run.js eslint:fix",
     "prepublishOnly": "./bin/dh-run.js prepublishOnly"
   },
   "version": "0.5.1"

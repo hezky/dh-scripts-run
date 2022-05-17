@@ -19,4 +19,4 @@ const run = () => {
   compileBabel(CWD_SRC_JS, CWD_LIB_JS);
 };
 
-export { run };
+export default run;

@@ -25,4 +25,4 @@ const run = () => {
   testMocha();
 };
 
-export { run };
+export default run;

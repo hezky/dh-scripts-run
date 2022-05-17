@@ -23,4 +23,4 @@ const run = () => {
   rmDirFolder(DIR_LIB);
 };
 
-export { run };
+export default run;

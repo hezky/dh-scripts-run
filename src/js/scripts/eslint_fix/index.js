@@ -1,9 +1,9 @@
 import { logError } from "utils/log";
 
-import eslintMain from "./main.js";
+import eslintMain from "scripts/eslint/main.js";
 
 const run = () => {
-  const options = { fix: false };
+  const options = { fix: true };
   eslintMain(options).catch((error) => {
     logError(error);
     process.exit(1);

@@ -5,4 +5,4 @@ const run = () => {
   runBuild();
 };
 
-export { run };
+export default run;
