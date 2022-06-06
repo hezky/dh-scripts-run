@@ -1,7 +1,7 @@
 import { logInfo } from "utils/log";
 
-const run = () => {
+const module = () => {
   logInfo("--- UNKNOW ---");
 };
 
-export default run;
+export default module;

@@ -9,12 +9,18 @@ const spawnSync = require("child_process").spawnSync;
 const DEFAULT_SCRIPT = "help";
 const UNKNOWN_SCRIPT = "unknown";
 const argScript = process.argv[2] || DEFAULT_SCRIPT;
-const script =
-  typeof argScript === "string" || argScript instanceof String
-    ? argScript.length === 0
-      ? DEFAULT_SCRIPT
-      : argScript.replaceAll(":", "_")
-    : UNKNOWN_SCRIPT;
+const determineScript = (argScript) => {
+  let result = UNKNOWN_SCRIPT;
+  if (typeof argScript === "string" || argScript instanceof String) {
+    if (argScript.length === 0) {
+      result = DEFAULT_SCRIPT;
+    } else {
+      result = argScript.replaceAll(":", "_");
+    }
+  }
+  return result;
+};
+const script = determineScript(argScript);
 // -----------------------------------------
 
 // -----------------------------------------
@@ -35,8 +41,6 @@ const determineParrentFolder = (path, deep = 1) => {
   return res;
 };
 const parrentFolder = determineParrentFolder(__dirname);
-// const pathToScript = `${parrentFolder}/${folder}/js/run/${script}.js`;
-// const pathToScript = `${parrentFolder}/${folder}/js/run/${script}/index.js`;
 const pathToScript = `${parrentFolder}/${folder}/js/run/index.js`;
 // -----------------------------------------
 

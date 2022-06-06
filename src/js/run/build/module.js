@@ -15,8 +15,8 @@ const compileBabel = (source, target) => {
   }
 };
 
-const run = () => {
+const module = () => {
   compileBabel(CWD_SRC_JS, CWD_LIB_JS);
 };
 
-export default run;
+export default module;

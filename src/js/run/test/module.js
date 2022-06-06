@@ -21,8 +21,8 @@ const testMocha = () => {
   }
 };
 
-const run = () => {
+const module = () => {
   testMocha();
 };
 
-export default run;
+export default module;

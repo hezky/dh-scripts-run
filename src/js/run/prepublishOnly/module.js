@@ -1,9 +1,9 @@
 import runBuild from "run/build/module";
 import runClean from "run/clean/module";
 
-const run = () => {
+const module = () => {
   runClean();
   runBuild();
 };
 
-export default run;
+export default module;

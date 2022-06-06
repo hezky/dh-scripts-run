@@ -2,7 +2,7 @@ import { logError } from "utils/log";
 
 import eslintMain from "./scripts/main.js";
 
-const run = () => {
+const module = () => {
   const options = { fix: false };
   eslintMain(options).catch((error) => {
     logError(error);
@@ -10,4 +10,4 @@ const run = () => {
   });
 };
 
-export default run;
+export default module;

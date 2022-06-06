@@ -18,9 +18,9 @@ const rmDirFolder = (dir) => {
   }
 };
 
-const run = () => {
+const module = () => {
   rmDirFolder(DIR_DIST);
   rmDirFolder(DIR_LIB);
 };
 
-export default run;
+export default module;
