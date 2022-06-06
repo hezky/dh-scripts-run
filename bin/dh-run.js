@@ -20,7 +20,7 @@ const determineScript = () => {
   }
   return result;
 };
-const script = determineScript(argScript);
+const script = determineScript();
 // -----------------------------------------
 
 // -----------------------------------------
