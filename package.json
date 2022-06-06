@@ -36,5 +36,5 @@
     "help": "./bin/dh-run.js help",
     "prepublishOnly": "./bin/dh-run.js prepublishOnly"
   },
-  "version": "0.6.1"
+  "version": "0.6.2"
 }
