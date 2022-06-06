@@ -23,7 +23,7 @@ async function main(options) {
 
   // -----------------------------------------
   // 1] Create an instance with the `fix` option
-  var eslint = new ESLint({
+  const eslint = new ESLint({
     fix: options.fix,
     useEslintrc: true,
   });

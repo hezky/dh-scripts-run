@@ -5,7 +5,7 @@ import { CWD_DEVEL, RUN_MODULES } from "consts/dirs";
 
 const RUN_BABEL = `${RUN_MODULES}/@babel/node/bin/babel-node.js`;
 
-const run = () => {
+const module = () => {
   const path = `${CWD_DEVEL}/index.js`;
   if (existsSync(path)) {
     spawnSync(RUN_BABEL, [require.resolve(path)], {
@@ -14,4 +14,4 @@ const run = () => {
   }
 };
 
-export default run;
+export default module;
