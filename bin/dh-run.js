@@ -6,11 +6,15 @@ const spawnSync = require("child_process").spawnSync;
 
 // -----------------------------------------
 // 0] determine - name script
-const argScript = process.argv[2];
+const DEFAULT_SCRIPT = "help";
+const UNKNOWN_SCRIPT = "unknown";
+const argScript = process.argv[2] || DEFAULT_SCRIPT;
 const script =
   typeof argScript === "string" || argScript instanceof String
-    ? argScript.replaceAll(":", "_")
-    : "unknown";
+    ? argScript.length === 0
+      ? DEFAULT_SCRIPT
+      : argScript.replaceAll(":", "_")
+    : UNKNOWN_SCRIPT;
 // -----------------------------------------
 
 // -----------------------------------------
@@ -30,10 +34,10 @@ const determineParrentFolder = (path, deep = 1) => {
   }
   return res;
 };
-const parrentFolder = determineParrentFolder(
-  __dirname
-);
-const pathToScript = `${parrentFolder}/${folder}/js/run/${script}.js`;
+const parrentFolder = determineParrentFolder(__dirname);
+// const pathToScript = `${parrentFolder}/${folder}/js/run/${script}.js`;
+// const pathToScript = `${parrentFolder}/${folder}/js/run/${script}/index.js`;
+const pathToScript = `${parrentFolder}/${folder}/js/run/index.js`;
 // -----------------------------------------
 
 // -----------------------------------------
@@ -41,11 +45,12 @@ const pathToScript = `${parrentFolder}/${folder}/js/run/${script}.js`;
 if (fs.existsSync(pathToScript)) {
   const absolutePathScript = require.resolve(pathToScript);
   const args = process.argv.slice(3);
-  console.info(">> ", argScript, ": start");
+  args.unshift(script);
+  console.info(">> ", script, ": start");
   console.info("");
   console.info("--------------------------------------------");
   console.info("");
-  console.time(argScript);
+  console.time(script);
 
   spawnSync(apl, [absolutePathScript].concat(args), {
     stdio: "inherit",
@@ -54,9 +59,9 @@ if (fs.existsSync(pathToScript)) {
   console.info("");
   console.info("--------------------------------------------");
   console.info("");
-  console.timeEnd(argScript);
+  console.timeEnd(script);
   console.info("");
-  console.info(">> ", argScript, ": end");
+  console.info(">> ", script, ": end");
 } else {
   console.info("");
   console.info("--------------------------------------------");
