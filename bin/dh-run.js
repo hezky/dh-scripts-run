@@ -9,7 +9,7 @@ const spawnSync = require("child_process").spawnSync;
 const DEFAULT_SCRIPT = "help";
 const UNKNOWN_SCRIPT = "unknown";
 const argScript = process.argv[2] || DEFAULT_SCRIPT;
-const determineScript = (argScript) => {
+const determineScript = () => {
   let result = UNKNOWN_SCRIPT;
   if (typeof argScript === "string" || argScript instanceof String) {
     if (argScript.length === 0) {
