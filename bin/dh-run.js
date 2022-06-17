@@ -4,8 +4,18 @@
 const fs = require("fs");
 const spawnSync = require("child_process").spawnSync;
 
+// TODO SCRIPT CHECK && log
+
 // -----------------------------------------
-// 0] determine - name script
+// 0] determine - whence run
+const isScriptsRun = process.env.npm_package_name === "@dh-scripts/run";
+process.env.isScriptsRun = isScriptsRun;
+const apl = (isScriptsRun && "babel-node") || "node";
+const folder = (isScriptsRun && "src") || "lib";
+// -----------------------------------------
+
+// -----------------------------------------
+// 1] determine - name script
 const DEFAULT_SCRIPT = "help";
 const UNKNOWN_SCRIPT = "unknown";
 const argScript = process.argv[2] || DEFAULT_SCRIPT;
@@ -20,15 +30,7 @@ const determineScript = () => {
   }
   return result;
 };
-const script = determineScript();
-// -----------------------------------------
-
-// -----------------------------------------
-// 1] determine - whence run
-const isScriptsRun = process.env.npm_package_name === "@dh-scripts/run";
-process.env.isScriptsRun = isScriptsRun;
-const apl = (isScriptsRun && "babel-node") || "node";
-const folder = (isScriptsRun && "src") || "lib";
+let script = determineScript();
 // -----------------------------------------
 
 // -----------------------------------------
@@ -41,40 +43,41 @@ const determineParrentFolder = (path, deep = 1) => {
   return res;
 };
 const parrentFolder = determineParrentFolder(__dirname);
-const pathToScript = `${parrentFolder}/${folder}/js/run/index.js`;
+const pathToIndex = `${parrentFolder}/${folder}/js/run/index.js`;
+// -----------------------------------------
+
+// -----------------------------------------
+// 3] check exist script
+const pathToScript = `${parrentFolder}/${folder}/js/run/${script}`;
+const pathToModule = `${pathToScript}/module.js`;
+const pathToConfig = `${pathToScript}/config.js`;
+if (!fs.existsSync(pathToModule) || !fs.existsSync(pathToConfig)) {
+  script = UNKNOWN_SCRIPT;
+}
 // -----------------------------------------
 
 // -----------------------------------------
 // 3] start processing
-if (fs.existsSync(pathToScript)) {
-  const absolutePathScript = require.resolve(pathToScript);
-  const args = process.argv.slice(3);
-  args.unshift(script);
-  console.info(">> ", script, ": start");
-  console.info("");
-  console.info("--------------------------------------------");
-  console.info("");
-  console.time(script);
+const absolutePathScript = require.resolve(pathToIndex);
+const args = [script, argScript, ...process.argv.slice(3)];
+console.info("");
+console.info(`>> ${script}: start`);
+console.info("");
+console.info("--------------------------------------------");
+console.info("");
+console.time(script);
 
-  spawnSync(apl, [absolutePathScript].concat(args), {
-    stdio: "inherit",
-  });
+spawnSync(apl, [absolutePathScript].concat(args), {
+  stdio: "inherit",
+});
 
-  console.info("");
-  console.info("--------------------------------------------");
-  console.info("");
-  console.timeEnd(script);
-  console.info("");
-  console.info(">> ", script, ": end");
-} else {
-  console.info("");
-  console.info("--------------------------------------------");
-  console.info("");
-  console.info("UNKNOWN SCRIPT - ", argScript);
-  console.info("");
-  console.info("--------------------------------------------");
-  console.info("");
-}
+console.info("");
+console.info("--------------------------------------------");
+console.info("");
+console.timeEnd(script);
+console.info("");
+console.info(`>> ${script}: end`);
+console.info("");
 // -----------------------------------------
 
 process.exit(0);

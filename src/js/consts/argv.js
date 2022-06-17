@@ -1,3 +1,4 @@
 const ARGV_ACT_SCRIPT = 2;
+const ARGV_ARG_SCRIPT = 3;
 
-export { ARGV_ACT_SCRIPT };
+export { ARGV_ACT_SCRIPT, ARGV_ARG_SCRIPT };
