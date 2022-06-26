@@ -37,6 +37,7 @@
     "eslint:fix": "./bin/dh-run.js eslint:fix",
     "help": "./bin/dh-run.js help",
     "prepublishOnly": "./bin/dh-run.js prepublishOnly",
+    "version": "./bin/dh-run.js version",
     "x": "./bin/dh-run.js x"
   },
   "version": "0.6.2"

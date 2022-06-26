@@ -8,10 +8,11 @@ const spawnSync = require("child_process").spawnSync;
 
 // -----------------------------------------
 // 0] determine - whence run
-const isScriptsRun = process.env.npm_package_name === "@dh-scripts/run";
-process.env.isScriptsRun = isScriptsRun;
-const apl = (isScriptsRun && "babel-node") || "node";
-const folder = (isScriptsRun && "src") || "lib";
+const ACTUAL_PCKG = "@dh-scripts/run";
+const IS_SCRIPTS_RUN = process.env.npm_package_name === ACTUAL_PCKG;
+process.env.isScriptsRun = IS_SCRIPTS_RUN;
+const apl = (IS_SCRIPTS_RUN && "babel-node") || "node";
+const folder = (IS_SCRIPTS_RUN && "src") || "lib";
 // -----------------------------------------
 
 // -----------------------------------------
@@ -60,11 +61,11 @@ if (!fs.existsSync(pathToModule) || !fs.existsSync(pathToConfig)) {
 // 3] start processing
 const absolutePathScript = require.resolve(pathToIndex);
 const args = [script, argScript, ...process.argv.slice(3)];
-console.info("");
-console.info(`>> ${script}: start`);
-console.info("");
-console.info("--------------------------------------------");
-console.info("");
+// console.info("");
+// console.info(`>> ${script}: start`);
+// console.info("");
+// console.info("--------------------------------------------");
+// console.info("");
 console.time(script);
 
 spawnSync(apl, [absolutePathScript].concat(args), {
@@ -75,7 +76,7 @@ console.info("");
 console.info("--------------------------------------------");
 console.info("");
 console.timeEnd(script);
-console.info("");
+// console.info("");
 console.info(`>> ${script}: end`);
 console.info("");
 // -----------------------------------------
