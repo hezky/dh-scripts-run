@@ -1,6 +1,6 @@
 const config = {
   description: {
-    short: "Run examples",
+    short: "Run examples.",
   },
   label: "devel",
   name: "devel",

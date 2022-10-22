@@ -1,6 +1,7 @@
 const config = {
+  color: "gray",
   description: {
-    short: "Show actual version",
+    short: "Show version apk 'dh-run'.",
   },
   label: "version",
   name: "version",

@@ -25,16 +25,13 @@ const showShortDescriptions = () => {
     const path = `${JS_RUN}/${el}`;
     const pathConfig = `${path}/config.js`;
     const config = require(pathConfig);
-    const { default: { label, description: { short } = {} } = {} } = config;
+    const { default: { color, label, description: { short } = {} } = {} } =
+      config;
     if (label && short) {
+      const repeatCol = repeat(" ", maxLength + 3 - String(label).length);
+      const content = (color && chalk[color](short)) || short;
       result += result.length === 0 ? "" : "\n";
-      result +=
-        "  " +
-        chalk.yellow(label) +
-        " " +
-        repeat(" ", maxLength + 3 - String(label).length) +
-        " " +
-        short;
+      result += "  " + chalk.yellow(label) + " " + repeatCol + " " + content;
     }
   }
   return result;

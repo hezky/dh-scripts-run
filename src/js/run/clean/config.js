@@ -1,6 +1,6 @@
 const config = {
   description: {
-    short: "Clean directory 'lib/' and 'dist/'",
+    short: "Clean directory 'lib/' and 'dist/'.",
   },
   label: "clean",
   name: "clean",

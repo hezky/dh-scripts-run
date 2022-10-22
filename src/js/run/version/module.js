@@ -1,10 +1,9 @@
 import chalk from "chalk";
+import pckJson from "project/package.json";
 
-const CONTENT = "dh-run version ${version}";
+const CONTENT = "\ndh-run version ${version}";
 
 const module = () => {
-  const actFolder = process.cwd();
-  const pckJson = require(`${actFolder}/package.json`);
   const replacedContent = CONTENT.replaceAll(
     "${version}",
     chalk.yellow(pckJson.version)
