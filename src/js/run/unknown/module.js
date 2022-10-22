@@ -1,15 +1,19 @@
-import { readFileSync } from "fs";
+import chalk from "chalk";
 
 import { ARGV_ARG_SCRIPT } from "consts/argv";
-import { marked } from "utils/marked";
+
+const CONTENT =
+  "dh-run: '${command}' is not a dh-run command. See '" +
+  chalk.yellow("dh-run help") +
+  "'.";
 
 const module = () => {
-  const path = `${__dirname}/marked.md`;
   const argScript = process.argv[ARGV_ARG_SCRIPT];
-  const content = readFileSync(path, "UTF-8");
-  const replacedContent = content.replaceAll("${command}", argScript);
-  console.log();
-  marked(replacedContent);
+  const replacedContent = CONTENT.replaceAll(
+    "${command}",
+    chalk.yellow(argScript)
+  );
+  console.log(replacedContent);
 };
 
 export default module;

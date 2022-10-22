@@ -4,7 +4,7 @@
 const fs = require("fs");
 const spawnSync = require("child_process").spawnSync;
 
-// TODO SCRIPT CHECK && log
+// TODO > SCRIPT CHECK && log
 
 // -----------------------------------------
 // 0] determine - whence run
@@ -61,11 +61,6 @@ if (!fs.existsSync(pathToModule) || !fs.existsSync(pathToConfig)) {
 // 3] start processing
 const absolutePathScript = require.resolve(pathToIndex);
 const args = [script, argScript, ...process.argv.slice(3)];
-// console.info("");
-// console.info(`>> ${script}: start`);
-// console.info("");
-// console.info("--------------------------------------------");
-// console.info("");
 console.time(script);
 
 spawnSync(apl, [absolutePathScript].concat(args), {
@@ -76,7 +71,6 @@ console.info("");
 console.info("--------------------------------------------");
 console.info("");
 console.timeEnd(script);
-// console.info("");
 console.info(`>> ${script}: end`);
 console.info("");
 // -----------------------------------------

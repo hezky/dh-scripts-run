@@ -1,14 +1,15 @@
-import { readFileSync } from "fs";
+import chalk from "chalk";
 
-import { marked } from "utils/marked";
+const CONTENT = "dh-run version ${version}";
 
 const module = () => {
-  const path = `${__dirname}/marked.md`;
-  const content = readFileSync(path, "UTF-8");
   const actFolder = process.cwd();
   const pckJson = require(`${actFolder}/package.json`);
-  const replacedContent = content.replaceAll("${version}", pckJson.version);
-  marked(replacedContent);
+  const replacedContent = CONTENT.replaceAll(
+    "${version}",
+    chalk.yellow(pckJson.version)
+  );
+  console.log(replacedContent);
 };
 
 export default module;

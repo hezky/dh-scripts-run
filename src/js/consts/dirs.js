@@ -26,6 +26,9 @@ const CWD_TEST = `${CWD}/${DIR_TEST}`;
 const RUN = PARRENT_FOLDER(__dirname, 3);
 const RUN_MODULES = `${RUN}/${DIR_NODE_MODULES}`;
 
+const JS = PARRENT_FOLDER(__dirname, 1);
+const JS_RUN = `${JS}/run`;
+
 export {
   CWD,
   CWD_DEVEL,
@@ -40,6 +43,7 @@ export {
   DIR_LIB_JS,
   DIR_SRC_JS,
   DIR_TEST,
+  JS_RUN,
   RUN,
   RUN_MODULES,
 };

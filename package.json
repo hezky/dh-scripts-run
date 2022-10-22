@@ -10,8 +10,6 @@
     "@dh-dependency/base": "^0.1.4",
     "chai": "^4.3.6",
     "dotenv": "^16.0.1",
-    "marked": "^4.0.17",
-    "marked-terminal": "^5.1.1",
     "mocha": "^10.0.0"
   },
   "devDependencies": {
