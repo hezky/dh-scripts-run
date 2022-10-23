@@ -4,8 +4,6 @@
 const fs = require("fs");
 const spawnSync = require("child_process").spawnSync;
 
-// TODO > SCRIPT CHECK && log
-
 // -----------------------------------------
 // 0] determine - whence run
 const ACTUAL_PCKG = "@dh-scripts/run";
