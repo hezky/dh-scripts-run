@@ -13,16 +13,22 @@ Compile the babel code into ecmascript above the directory "src/js/". The compil
 Delete the directories "div/", "lib/".
 
 ### script devel
-Run the example. 
+Run the example.
 
 ### script eslint
 Run static code analysis with eslint over the directories "src/js/", "test/".
+
+### script help
+Help for the application 'dh-run'.
 
 ### script prepublishOnly
 Lifecycle script prepublishOnly. Runs only with the "npm publish" command. Executing the script before the "npm publish" itself is run The current script runs the "clean" and "build" scripts.
 
 ### script test
 Run tests over the directory "src/js/".
+
+### script version
+The current version of the application 'dh-run'.
 
 ## Usage
 
