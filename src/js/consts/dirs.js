@@ -23,7 +23,7 @@ const CWD_LIB_JS = `${CWD}/${DIR_LIB_JS}`;
 const CWD_SRC_JS = `${CWD}/${DIR_SRC_JS}`;
 const CWD_TEST = `${CWD}/${DIR_TEST}`;
 
-const DEEP_PARRENT_FOLDER = process.env.isScriptsRun === true ? 3 : 6;
+const DEEP_PARRENT_FOLDER = process.env.isScriptsRun === "true" ? 3 : 6;
 const RUN = PARRENT_FOLDER(__dirname, DEEP_PARRENT_FOLDER);
 const RUN_MODULES = `${RUN}/${DIR_NODE_MODULES}`;
 
