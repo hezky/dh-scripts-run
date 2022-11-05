@@ -9,6 +9,7 @@ const spawnSync = require("child_process").spawnSync;
 const ACTUAL_PCKG = "@dh-scripts/run";
 const IS_SCRIPTS_RUN = process.env.npm_package_name === ACTUAL_PCKG;
 process.env.isScriptsRun = IS_SCRIPTS_RUN;
+process.env.isNpmRun = process.env.npm_package_name !== undefined;
 const apl = (IS_SCRIPTS_RUN && "babel-node") || "node";
 const folder = (IS_SCRIPTS_RUN && "src") || "lib";
 // -----------------------------------------
