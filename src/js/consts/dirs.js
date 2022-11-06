@@ -24,7 +24,7 @@ const CWD_SRC_JS = `${CWD}/${DIR_SRC_JS}`;
 const CWD_TEST = `${CWD}/${DIR_TEST}`;
 
 const DEEP_PARRENT_FOLDER =
-  process.env.isNpmRun === "true" && process.env.isScriptsRun === "true"
+  process.env.isNpmRun !== "true" || process.env.isScriptsRun === "true"
     ? 3
     : 6;
 const RUN = PARRENT_FOLDER(__dirname, DEEP_PARRENT_FOLDER);
