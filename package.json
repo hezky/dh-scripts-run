@@ -7,7 +7,7 @@
     "url": "https://github.com/hezky/dh-scripts-run/issues"
   },
   "dependencies": {
-    "@dh-dependency/base": "^0.1.8",
+    "@dh-dependency/base": "^0.1.9",
     "chai": "^4.3.7",
     "dotenv": "^16.0.3",
     "mocha": "^10.2.0"
