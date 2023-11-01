@@ -38,6 +38,7 @@
     "@babel/plugin-proposal-private-property-in-object",
     "@babel/plugin-proposal-throw-expressions",
     "@babel/plugin-syntax-dynamic-import",
-    ["@babel/plugin-transform-classes", {"loose": true}]
+    ["@babel/plugin-transform-classes", {"loose": true}],
+    "@babel/plugin-transform-modules-commonjs"
   ]
 }
