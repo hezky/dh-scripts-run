@@ -1,4 +1,4 @@
-import chalk from "chalk";
+import kleur from "kleur";
 import pckJson from "project/package.json";
 
 const CONTENT = "\ndh-run version ${version}";
@@ -6,7 +6,7 @@ const CONTENT = "\ndh-run version ${version}";
 const module = () => {
   const replacedContent = CONTENT.replaceAll(
     "${version}",
-    chalk.yellow(pckJson.version)
+    kleur.yellow(pckJson.version)
   );
   console.log(replacedContent);
 };

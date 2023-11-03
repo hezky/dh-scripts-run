@@ -1,5 +1,5 @@
 import { existsSync } from "fs";
-import chalk from "chalk";
+import kleur from "kleur";
 
 import { JS_RUN } from "consts/dirs";
 
@@ -18,7 +18,7 @@ const showDescription = (parameter) => {
       result += result.length === 0 ? "" : "\n";
       result +=
         "  " +
-        chalk.yellow(label) +
+        kleur.yellow(label) +
         " " +
         repeat(" ", label.length + 3 - String(label).length) +
         " " +

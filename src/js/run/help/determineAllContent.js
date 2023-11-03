@@ -1,4 +1,4 @@
-import chalk from "chalk";
+import kleur from "kleur";
 
 import { JS_RUN } from "consts/dirs";
 import directoriesInDirectory from "utils/directoriesInDirectory";
@@ -29,9 +29,9 @@ const showShortDescriptions = () => {
       config;
     if (label && short) {
       const repeatCol = repeat(" ", maxLength + 3 - String(label).length);
-      const content = (color && chalk[color](short)) || short;
+      const content = (color && kleur[color](short)) || short;
       result += result.length === 0 ? "" : "\n";
-      result += "  " + chalk.yellow(label) + " " + repeatCol + " " + content;
+      result += "  " + kleur.yellow(label) + " " + repeatCol + " " + content;
     }
   }
   return result;
