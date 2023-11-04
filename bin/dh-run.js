@@ -1,77 +1,78 @@
 #!/usr/bin/env node
 
-/* eslint-disable no-console */
-const fs = require("fs");
-const spawnSync = require("child_process").spawnSync;
+const path = require("path");
+const { spawnSync } = require("child_process");
 
-// -----------------------------------------
-// 0] determine - whence run
-const ACTUAL_PCKG = "@dh-scripts/run";
-const IS_SCRIPTS_RUN = process.env.npm_package_name === ACTUAL_PCKG;
-process.env.isScriptsRun = IS_SCRIPTS_RUN;
-process.env.isNpmRun = process.env.npm_package_name !== undefined;
-const apl = (IS_SCRIPTS_RUN && "babel-node") || "node";
-const folder = (IS_SCRIPTS_RUN && "src") || "lib";
-// -----------------------------------------
+// Constants
+const EXPECTED_PACKAGE = "@dh-scripts/run";
+const IS_EXPECTED_PACKAGE = process.env.npm_package_name === EXPECTED_PACKAGE;
+const NODE_EXECUTION_ENVIRONMENT = IS_EXPECTED_PACKAGE ? "babel-node" : "node";
+const SOURCE_FOLDER = IS_EXPECTED_PACKAGE ? "src" : "lib";
+const DEFAULT_COMMAND = "help";
+const UNKNOWN_COMMAND = "unknown";
 
-// -----------------------------------------
-// 1] determine - name script
-const DEFAULT_SCRIPT = "help";
-const UNKNOWN_SCRIPT = "unknown";
-const argScript = process.argv[2] || DEFAULT_SCRIPT;
-const determineScript = () => {
-  let result = UNKNOWN_SCRIPT;
-  if (typeof argScript === "string" || argScript instanceof String) {
-    if (argScript.length === 0) {
-      result = DEFAULT_SCRIPT;
-    } else {
-      result = argScript.replaceAll(":", "_");
-    }
-  }
-  return result;
-};
-let script = determineScript();
-// -----------------------------------------
+// Environment Variables
+process.env.dh_isScriptsExecuted = IS_EXPECTED_PACKAGE;
+process.env.dh_isNpmRun = process.env.npm_package_name !== undefined;
 
-// -----------------------------------------
-// 2] determine - path
-const determineParrentFolder = (path, deep = 1) => {
-  let res = path;
-  for (let i = 0; i < deep; i++) {
-    res = res.substring(0, res.lastIndexOf("/"));
-  }
-  return res;
-};
-const parrentFolder = determineParrentFolder(__dirname);
-const pathToIndex = `${parrentFolder}/${folder}/js/run/index.js`;
-// -----------------------------------------
+// Determine command name
+const inputCommandArgument = process.argv[2] || DEFAULT_COMMAND;
+let command = determineCommand(inputCommandArgument);
 
-// -----------------------------------------
-// 3] check exist script
-const pathToScript = `${parrentFolder}/${folder}/js/run/${script}`;
-const pathToModule = `${pathToScript}/module.js`;
-const pathToConfig = `${pathToScript}/config.js`;
-if (!fs.existsSync(pathToModule) || !fs.existsSync(pathToConfig)) {
-  script = UNKNOWN_SCRIPT;
+// Determine path
+const parentFolder = path.dirname(__dirname);
+const pathToIndex = path.join(
+  parentFolder,
+  SOURCE_FOLDER,
+  "js",
+  "run",
+  "index.js"
+);
+
+// Check command existence
+const pathToCommand = path.join(
+  parentFolder,
+  SOURCE_FOLDER,
+  "js",
+  "run",
+  command
+);
+const pathToModule = path.join(pathToCommand, "module.js");
+const pathToConfig = path.join(pathToCommand, "config.js");
+
+try {
+  require.resolve(pathToModule);
+  require.resolve(pathToConfig);
+} catch (error) {
+  console.error(`Error resolving module or config: ${error}`);
+  command = UNKNOWN_COMMAND;
 }
-// -----------------------------------------
 
-// -----------------------------------------
-// 3] start processing
+// Start processing
 const absolutePathScript = require.resolve(pathToIndex);
-const args = [script, argScript, ...process.argv.slice(3)];
-console.time(script);
+const args = [command, inputCommandArgument, ...process.argv.slice(3)];
+console.time(command);
 
-spawnSync(apl, [absolutePathScript].concat(args), {
+spawnSync(NODE_EXECUTION_ENVIRONMENT, [absolutePathScript].concat(args), {
   stdio: "inherit",
 });
 
 console.info("");
 console.info("--------------------------------------------");
 console.info("");
-console.timeEnd(script);
-console.info(`>> ${script}: end`);
+console.timeEnd(command);
+console.info(`>> ${command}: end`);
 console.info("");
-// -----------------------------------------
 
 process.exit(0);
+
+function determineCommand(argCommand) {
+  let result = UNKNOWN_COMMAND;
+  if (typeof argCommand === "string" || argCommand instanceof String) {
+    result =
+      argCommand.length === 0
+        ? DEFAULT_COMMAND
+        : argCommand.replaceAll(":", "_");
+  }
+  return result;
+}
