@@ -11,7 +11,7 @@ const module = () => {
   const argScript = process.argv[ARGV_ARG_SCRIPT];
   const replacedContent = CONTENT.replaceAll(
     "${command}",
-    kleur.yellow(argScript)
+    kleur.yellow(argScript),
   );
   console.log(replacedContent);
 };
