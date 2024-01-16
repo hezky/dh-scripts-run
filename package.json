@@ -52,5 +52,5 @@
     "version": "./bin/dh-run.js version",
     "x": "./bin/dh-run.js x"
   },
-  "version": "0.9.10"
+  "version": "0.9.11"
 }
