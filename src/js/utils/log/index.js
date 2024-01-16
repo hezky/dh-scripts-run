@@ -6,7 +6,7 @@ import transformMsg from "./transformMsg";
 const NEWLINE           = "\n";
 const DOUBLE_NEWLINE    = `${NEWLINE}${NEWLINE}`;
 
-const LOG_COLOR_ERROR   = kleur.bold.red;
+const LOG_COLOR_ERROR   = kleur.red;
 const LOG_COLOR_INFO    = kleur.cyan;
 const LOG_COLOR_PROCESS = kleur.green;
 const LOG_COLOR_WARNING = kleur.orange;
@@ -35,6 +35,7 @@ const logWarning = (msg) => {
 };
 
 const logT = (kleurColor, msgTemplate, msg) => {
+  console.log(">> ", kleurColor);
   console.log(kleurColor(msgTemplate(transformMsg(msg))));
 };
 
