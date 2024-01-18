@@ -1,5 +1,6 @@
 const { ESLint } = require("eslint");
-import { GlobSync } from "glob";
+
+import { globSync } from "glob";
 
 import { DIR_DEVEL, DIR_SRC_JS, DIR_TEST } from "consts/dirs";
 
@@ -16,8 +17,7 @@ async function main(options) {
     `/${DIR_TEST}/**/*.js`,
   ];
   const paths = PATHS_WITH_FILES.map((item) => `${cwd}${item}`);
-  const existFilesInPath = (path) =>
-    GlobSync(path, globOptions).found.length !== 0;
+  const existFilesInPath = (path) => globSync(path, globOptions).length !== 0;
   const executeOnPaths = paths.filter((path) => existFilesInPath(path));
   // -----------------------------------------
 

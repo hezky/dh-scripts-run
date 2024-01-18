@@ -35,7 +35,6 @@ const logWarning = (msg) => {
 };
 
 const logT = (kleurColor, msgTemplate, msg) => {
-  console.log(">> ", kleurColor);
   console.log(kleurColor(msgTemplate(transformMsg(msg))));
 };
 
