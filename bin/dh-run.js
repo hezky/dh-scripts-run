@@ -26,7 +26,7 @@ const pathToIndex = path.join(
   SOURCE_FOLDER,
   "js",
   "run",
-  "index.js"
+  "index.js",
 );
 
 // Check command existence
@@ -35,7 +35,7 @@ const pathToCommand = path.join(
   SOURCE_FOLDER,
   "js",
   "run",
-  command
+  command,
 );
 const pathToModule = path.join(pathToCommand, "module.js");
 const pathToConfig = path.join(pathToCommand, "config.js");
