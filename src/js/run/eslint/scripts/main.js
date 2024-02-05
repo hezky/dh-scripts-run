@@ -4,6 +4,8 @@ import { globSync } from "glob";
 
 import { DIR_DEVEL, DIR_SRC_JS, DIR_TEST } from "consts/dirs";
 
+import createConfig from "./utils/createConfig";
+
 async function main(options) {
   // -----------------------------------------
   // 0] Settings
@@ -23,10 +25,8 @@ async function main(options) {
 
   // -----------------------------------------
   // 1] Create an instance with the `fix` option
-  const eslint = new ESLint({
-    fix: options.fix,
-    useEslintrc: true,
-  });
+  const config = createConfig(options);
+  const eslint = new ESLint(config);
   // -----------------------------------------
 
   // -----------------------------------------
