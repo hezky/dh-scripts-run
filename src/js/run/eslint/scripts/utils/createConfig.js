@@ -1,21 +1,21 @@
 import path from "path";
 import fs from "fs";
 
-const CWD = process.cwd();
-const OVERRIDE_CONFIG_FILE = [
-  ".eslintrc.js",
-  ".eslintrc.cjs",
-  ".eslintrc.yaml",
-  ".eslintrc.yml",
-  ".eslintrc.json",
-  "package.json",
-];
-
-const CWD_OVERRIDE_CONFIG_FILE = OVERRIDE_CONFIG_FILE.map((item) =>
-  path.join(CWD, item),
-);
+import { CWD } from "consts/dirs";
 
 const createConfig = (options) => {
+  const OVERRIDE_CONFIG_FILE = [
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.yaml",
+    ".eslintrc.yml",
+    ".eslintrc.json",
+    "package.json",
+  ];
+  const CWD_OVERRIDE_CONFIG_FILE = OVERRIDE_CONFIG_FILE.map((item) =>
+    path.join(CWD, item),
+  );
+
   const config = {
     fix: options.fix,
     useEslintrc: process.env.dh_isNpmRun !== "false",
@@ -24,20 +24,17 @@ const createConfig = (options) => {
   if (!config.useEslintrc) {
     const overrideConfigFile = CWD_OVERRIDE_CONFIG_FILE.find((filePath) => {
       if (fs.existsSync(filePath)) {
-        if (path.basename(filePath) === "package.json") {
-          const packageJson = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-          return packageJson.eslintConfig !== undefined;
-        }
-        return path.basename(filePath) !== "package.json";
+        const isPackageJson = path.basename(filePath) === "package.json";
+        const fileContent = isPackageJson
+          ? JSON.parse(fs.readFileSync(filePath, "utf-8"))
+          : null;
+        return !isPackageJson || fileContent.eslintConfig !== undefined;
       }
       return false;
     });
 
-    if (overrideConfigFile) {
-      config.overrideConfigFile = overrideConfigFile;
-    } else {
-      console.log("--> todo : default overrideConfigFile");
-    }
+    config.overrideConfigFile =
+      overrideConfigFile || "--> todo : default overrideConfigFile";
   }
 
   return config;
