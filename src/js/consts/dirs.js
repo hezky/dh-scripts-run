@@ -50,6 +50,7 @@ export {
   DIR_SRC_JS,
   DIR_TEST,
   JS_RUN,
+  PARRENT_FOLDER,
   RUN,
   RUN_MODULES,
 };

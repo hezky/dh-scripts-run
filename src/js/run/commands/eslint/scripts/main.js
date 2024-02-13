@@ -1,5 +1,4 @@
 const { ESLint } = require("eslint");
-
 import { globSync } from "glob";
 
 import { DIR_DEVEL, DIR_SRC_JS, DIR_TEST } from "consts/dirs";

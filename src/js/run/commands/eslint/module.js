@@ -2,7 +2,7 @@ import { logError } from "utils/log";
 
 import eslintMain from "./scripts/main.js";
 
-const module = () => {
+const module = async () => {
   const options = { fix: false };
   eslintMain(options).catch((error) => {
     logError(error);
