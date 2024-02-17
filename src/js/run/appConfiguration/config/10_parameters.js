@@ -1,5 +1,7 @@
+import { logTodo } from "utils/log";
+
 const run = () => {
-  console.log("--- 10 PARAMETERS ---");
+  logTodo("parameters");
 };
 
 export default run;

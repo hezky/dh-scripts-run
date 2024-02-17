@@ -7,7 +7,7 @@ const runFile = async (filePath) => {
     try {
       const module = await import(filePath);
       if (module.default) {
-        module.default();
+        await module.default();
       }
     } catch (error) {
       console.error(`Failed to import module ${filePath}:`, error);
@@ -16,20 +16,19 @@ const runFile = async (filePath) => {
 };
 
 // Function to run files and directories in a given directory
-const runFilesAndDirectories = async (dir, numberCount) => {
+const runFilesAndDirectories = async (dir) => {
   // Get all files and directories in the given directory
   const items = fs.readdirSync(dir);
 
-  // Filter items whose first two characters are numbers
-  const filteredItems = items.filter((item) =>
-    item.slice(0, numberCount).match(/^\d+$/),
-  );
+  // Filter items whose name starts with a number
+  const filteredItems = items.filter((item) => /^\d/.test(item));
 
-  // Sort items by the numerical value of the first two characters
-  filteredItems.sort(
-    (a, b) =>
-      parseInt(a.slice(0, numberCount)) - parseInt(b.slice(0, numberCount)),
-  );
+  // Sort items by the numerical value at the start of the name
+  filteredItems.sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)[0]);
+    const numB = parseInt(b.match(/\d+/)[0]);
+    return numA - numB;
+  });
 
   for (const item of filteredItems) {
     const itemPath = path.join(dir, item);

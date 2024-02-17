@@ -1,17 +1,30 @@
 import * as env from "consts/env";
-import { logInfo } from "utils/log";
+import { logEmpty, logProc } from "utils/log";
 
-const run = () => {
+import Table from "cli-table";
+
+const run = async () => {
+  logProc("output");
+  logEmpty();
+
+  let table = new Table({
+    head: ["environments", "values"],
+    style: { head: ["cyan"] },
+  });
+
+  // env : command
+  table.push(["command", env.dh__get__command()]);
+
   // env : controlled package name
-  logInfo(
-    `env : controlled package name : ${env.dh__get__controlledPackageName()}`,
-  );
+  table.push(["controlled package name", env.dh__get__controlledPackageName()]);
 
   // env : controlled path
-  logInfo(`env : controlled path : ${env.dh__get__controlledPath()}`);
+  table.push(["controlled package path", env.dh__get__controlledPath()]);
 
   // env : type of run
-  logInfo(`env : type of run : ${env.dh__get__typeOfRun()}`);
+  table.push(["type of run", env.dh__get__typeOfRun()]);
+
+  console.log(table.toString());
 };
 
 export default run;

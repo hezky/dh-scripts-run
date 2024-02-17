@@ -1,5 +1,7 @@
+import { logTodo } from "utils/log";
+
 const run = () => {
-  console.log("--- 20 SETTINGS ---");
+  logTodo("settings");
 };
 
 export default run;
