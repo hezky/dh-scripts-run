@@ -1,6 +1,6 @@
 import { logTodo } from "utils/log";
 
-const run = () => {
+const run = async () => {
   logTodo("settings");
 };
 
