@@ -1,3 +1,4 @@
+/*
 import {
   existsSync,
   mkdirSync,
@@ -45,9 +46,9 @@ const module = () => {
 };
 
 export default module;
-
+*/
 /*
-// backup original file
+backup
 import { existsSync, mkdirSync } from "fs";
 import { spawnSync } from "child_process";
 
@@ -70,3 +71,40 @@ const module = () => {
 
 export default module;
 */
+
+import { existsSync, mkdirSync } from "fs";
+import { spawnSync } from "child_process";
+
+import { CWD_LIB_JS, CWD_SRC_JS, RUN_MODULES } from "consts/dirs";
+import { logError } from "utils/log";
+
+const compileBabel = (source, target) => {
+  let RUN_BABEL = `${RUN_MODULES}/@babel/cli/bin/babel.js`;
+
+  if (!existsSync(RUN_BABEL)) {
+    const res = spawnSync("find", [
+      RUN_MODULES,
+      "-name",
+      "@babel/cli/lib/babel",
+    ]);
+    if (res.status === 0) {
+      RUN_BABEL = res.stdout.toString().trim();
+    } else {
+      logError("Unable to find @babel/cli/lib/babel");
+      return;
+    }
+  }
+
+  if (!existsSync(CWD_LIB_JS)) mkdirSync(CWD_LIB_JS, { recursive: true });
+  const args = [source, "--no-comments", "--out-dir", target];
+  const res = spawnSync(RUN_BABEL, args);
+  if (res.status !== 0) {
+    logError(res);
+  }
+};
+
+const module = () => {
+  compileBabel(CWD_SRC_JS, CWD_LIB_JS);
+};
+
+export default module;
