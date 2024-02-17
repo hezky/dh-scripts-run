@@ -1,5 +1,5 @@
-import runBuild from "run/build/module";
-import runClean from "run/clean/module";
+import runBuild from "run/commands/build/module";
+import runClean from "run/commands/clean/module";
 
 const module = () => {
   runClean();
