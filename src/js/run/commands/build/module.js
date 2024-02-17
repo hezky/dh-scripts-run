@@ -12,6 +12,8 @@ import { transformSync } from "@babel/core";
 import { CWD_LIB_JS, CWD_SRC_JS } from "consts/dirs";
 import { logError } from "utils/log";
 
+import babelConfig from "./config/babelConfig";
+
 const compileBabel = (source, target) => {
   if (!existsSync(target)) mkdirSync(target, { recursive: true });
 
@@ -26,10 +28,7 @@ const compileBabel = (source, target) => {
     } else {
       try {
         const code = readFileSync(sourcePath, "utf-8");
-        const result = transformSync(code, {
-          presets: ["@babel/preset-env"],
-          comments: false,
-        });
+        const result = transformSync(code, babelConfig);
 
         if (result && result.code) {
           writeFileSync(targetPath, result.code);
