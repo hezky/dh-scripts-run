@@ -7,8 +7,6 @@ const CONTENT =
   kleur.yellow("dh-run help") +
   "'.";
 
-let a;
-
 const module = () => {
   const argScript = process.argv[ARGV_ARG_SCRIPT];
   const replacedContent = CONTENT.replaceAll(

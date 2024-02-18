@@ -1,6 +1,6 @@
 import { logError } from "utils/log";
 
-import eslintMain from "run/eslint/scripts/main.js";
+import eslintMain from "run/commands/eslint/scripts/main.js";
 
 const module = () => {
   const options = { fix: true };
