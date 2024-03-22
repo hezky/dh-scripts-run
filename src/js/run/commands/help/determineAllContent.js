@@ -24,7 +24,6 @@ const showShortDescriptions = () => {
   for (const el of list) {
     const path = `${JS_RUN}/${el}`;
     const pathConfig = `${path}/config.js`;
-    console.log("pathConfig >> ", pathConfig);
     const config = require(pathConfig);
     const { default: { color, label, description: { short } = {} } = {} } =
       config;
