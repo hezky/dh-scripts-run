@@ -7,16 +7,16 @@
     "url": "https://github.com/hezky/dh-scripts-run/issues"
   },
   "dependencies": {
-    "@babel/cli": "^7.23.9",
-    "@babel/core": "^7.24.0",
-    "@babel/eslint-parser": "^7.23.10",
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.3",
+    "@babel/eslint-parser": "^7.24.1",
     "@babel/eslint-plugin": "^7.23.5",
     "@babel/node": "^7.23.9",
-    "@babel/plugin-proposal-export-default-from": "^7.23.3",
-    "@babel/preset-env": "^7.24.0",
+    "@babel/plugin-proposal-export-default-from": "^7.24.1",
+    "@babel/preset-env": "^7.24.3",
     "@babel/register": "^7.23.7",
     "cli-table": "^0.3.11",
-    "core-js": "^3.36.0",
+    "core-js": "^3.36.1",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
@@ -28,7 +28,8 @@
     "babel-plugin-module-resolver": "^5.0.0",
     "chai": "^5.1.0",
     "mocha": "^10.3.0",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "yargs": "^17.7.2"
   },
   "description": "package run scripts",
   "files": [
