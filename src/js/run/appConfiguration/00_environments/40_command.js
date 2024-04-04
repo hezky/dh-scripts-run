@@ -20,7 +20,7 @@ const determineCommand = (argCommand) => {
 };
 
 const checkCommandExistence = (command) => {
-  const pathToCommand = `${PARRENT_FOLDER(__dirname, 3)}/commands/${command}`;
+  const pathToCommand = `${PARRENT_FOLDER(__dirname, 2)}/commands/${command}`;
   const pathToModule = path.join(pathToCommand, "module.js");
   const pathToConfig = path.join(pathToCommand, "config.js");
   try {
