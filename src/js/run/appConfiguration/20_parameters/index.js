@@ -10,7 +10,29 @@ const run = async () => {
   logProc("parameters");
 
   //  console.log("A : ", process.argv);
-  yargs(hideBin(process.argv)).command("build", "description", yargs => {}).argv;
+  const aaa = yargs(hideBin(process.argv))
+    .command("build", "description - build", (yargs) => {
+      return yargs
+        .option("srcJs", {
+          describe: "Path to the source JS directory",
+          type: "string",
+        })
+        .option("libJs", {
+          describe: "Path to the library JS directory",
+          type: "string",
+        });
+    })
+    .command("clean", "description - clean", (yargs) => {})
+    .command("devel", "description - devel", (yargs) => {})
+    .command("eslint", "description - eslint", (yargs) => {})
+    .command("eslint-fix", "description - eslint-fix", (yargs) => {})
+    .command("help", "description - help", (yargs) => {})
+    .command("prepublishOnly", "description - prepublishOnly", (yargs) => {})
+    .command("test", "description - test", (yargs) => {})
+    .command("version", "description - version", (yargs) => {})
+    .parse();
+
+  console.log("AAA : ", aaa);
 
   /*
     .demandCommand()
